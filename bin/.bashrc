@@ -1,0 +1,1 @@
+export PROJECT_DIR="main/path/where/AST-AutorunProy/is/installed"

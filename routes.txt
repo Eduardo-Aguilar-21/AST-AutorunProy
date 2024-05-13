@@ -1,0 +1,3 @@
+# add your project paths and execution ports here
+"/path/to/project/example-api", 8080
+"/path/to/project/example-frontend", 3000
