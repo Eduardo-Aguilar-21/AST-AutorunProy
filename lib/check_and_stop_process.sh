@@ -30,6 +30,6 @@ check_and_stop_process() {
         taskkill /F /PID "$pid"
         echo "Process stopped on port $port"
     else
-        echo "No processes on port $port"
+        echo "No processes on port $port" 
     fi
 }
