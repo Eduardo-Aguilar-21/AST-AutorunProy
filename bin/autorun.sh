@@ -60,7 +60,7 @@ route="${route//\"}"
     ls
 
     # Update the repository
-    git pull origin master
+    git pull origin master --force
 
     # Check if it's a Java (Maven) project
     if [ -f "pom.xml" ]; then
