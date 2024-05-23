@@ -23,12 +23,16 @@ check_and_stop_process() {
     
     # Check if there is any process on the port
     if [ -n "$process_info" ]; then
-        # Extract the PID of the process
-        local pid=$(echo "$process_info" | awk '{print $5}')
-        
-        # Stop the process
-        taskkill /F /PID "$pid"
-        echo "Process stopped on port $port"
+        # Iterate over each line of process information
+        while IFS= read -r line; do
+            # Extract the PID of the process
+            local pid=$(echo "$line" | awk '{print $NF}' | tr -d '[:space:]')
+            echo "$pid"
+            # Stop the process
+            kill $pid
+            powershell.exe -Command "taskkill /F /PID "$pid""
+            echo "Process stopped on port $port"
+        done <<< "$process_info"
     else
         echo "No processes on port $port" 
     fi

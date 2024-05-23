@@ -1,4 +1,5 @@
 #!/bin/bash
+Set-ExecutionPolicy RemoteSigned -Scope Process
 
 # Automated Project Runner
 # Copyright (C) 2024 Eduardo Aguilar AST
@@ -56,11 +57,8 @@ route="${route//\"}"
     continue
     }
 
-    # Show files in the project directory
-    ls
-
     # Update the repository
-    git pull origin master
+    git pull origin master --force
 
     # Check if it's a Java (Maven) project
     if [ -f "pom.xml" ]; then
