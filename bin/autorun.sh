@@ -56,9 +56,6 @@ route="${route//\"}"
     continue
     }
 
-    # Show files in the project directory
-    ls
-
     # Update the repository
     git pull origin master --force
 

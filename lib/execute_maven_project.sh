@@ -22,6 +22,9 @@ execute_maven_project() {
     local port="$2"
     
     echo "Detected Java project (Maven)"
+
+    # Check and stop the process on the specific port
+    check_and_stop_process "$port"
     
     # Compile and package the Java project
     mvn clean install
@@ -35,8 +38,7 @@ execute_maven_project() {
     # Determine the JAR file name
     local jar_name=$(basename "$project")"-0.0.1-SNAPSHOT.jar"
     
-    # Check and stop the process on the specific port
-    check_and_stop_process "$port"
+
     
     # Run the JAR file in the background on the specified port
     java -jar "$jar_name" --server.port="$port" &

@@ -22,6 +22,7 @@ execute_react_project() {
     local port="$2"
     
     echo "Detected React project"
+    check_and_stop_process "$port"
     
     # Change to the React project directory
     cd "$project" || {
@@ -36,6 +37,6 @@ execute_react_project() {
     }
 
     npm run build
-    check_and_stop_process "$port"
+
     node server.js --port="$port" &
 }
